@@ -5,6 +5,7 @@ import { Visitor } from './fintech/visitor';
 
 async function bootstrap() {
   console.log(realms);
+  console.log('reserves = ' + realms[0].reserves.length);
   const visitor = new Visitor(realms);
   visitor.getTx();
   const index = realms[0].country;

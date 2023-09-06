@@ -1,5 +1,6 @@
 import { Realm } from './realm';
 
+// financial transactions
 export class Trx {
   payer: Realm;
   payee: Realm;

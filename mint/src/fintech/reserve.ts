@@ -1,12 +1,10 @@
-import { Realm } from './realm';
-
 // foreign exchange funds
 export class Reserve {
-  realm: Realm;
+  realmID: bigint;
   amount: number;
 
-  constructor(realm: Realm, initialAmount: number) {
-    this.realm = realm;
+  constructor(realmID: bigint, initialAmount: number) {
+    this.realmID = realmID;
     this.amount = initialAmount;
   }
 
