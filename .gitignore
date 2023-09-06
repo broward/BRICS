@@ -1,0 +1,17 @@
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# Coverage directory used by tools like istanbul
+coverage
+*.lcov
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out/
+
+.env
+dist
+
+.DS_Store
