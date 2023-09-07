@@ -11,23 +11,32 @@ export enum Country {
 
 // financial realms
 export class Realm {
+  realmID: number;
   country: Country;
   reserves: Reserve[] = [];
   log: Trx[] = [];
 
   constructor(country: Country) {
     this.country = country;
+    this.realmID = Object.keys(Country).indexOf(country.toString()); 
 
-    // create foreign reserve pools
-    const values = Object.values(Country).filter((v) => !isNaN(Number(v)));
-    for (let i = 0; i < values.length; i++) {
+    // create reserve pools
+    const keys = Object.keys(Country).filter((v) => !isNaN(Number(v)));
+    for (let i = 0; i < keys.length; i++) {
       const reserve = new Reserve(BigInt(i), 0);
       this.reserves.push(reserve);
     }
   }
 
-  sendTrx(payer: Realm, payee: Realm, amount: number) {
-    const trx = new Trx(payer, payee, amount);
+  executeTrx(trx: Trx) {
+    // modify reserve pools here
+    const payerRealm = realms[trx.payerID];
+    const payeeRealm = realms[trx.payeeID];
+    const payerReserve = payerRealm.reserves[trx.payerID];
+    const PayeeReserve = payeeRealm.reserves[trx.payeeID];
+    payerReserve.adjustReserve(trx.amount);
+    PayeeReserve.adjustReserve(trx.amount);
+
     this.log.push(trx);
   }
 }

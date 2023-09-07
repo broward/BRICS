@@ -11,6 +11,7 @@ async function bootstrap() {
   const index = realms[0].country;
   console.log('my country is ' + realms[0].country);
   console.log('my index is ' + Country[index]);
+  console.log('my realmID = ' + realms[0].realmID);
 
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
