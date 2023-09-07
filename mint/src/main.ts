@@ -7,7 +7,7 @@ async function bootstrap() {
   console.log(realms);
   console.log('reserves = ' + realms[0].reserves.length);
   const visitor = new Visitor(realms);
-  visitor.getTx();
+  visitor.getTrx();
   const index = realms[0].country;
   console.log('my country is ' + realms[0].country);
   console.log('my index is ' + Country[index]);

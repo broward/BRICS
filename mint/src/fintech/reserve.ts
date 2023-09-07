@@ -8,7 +8,11 @@ export class Reserve {
     this.amount = initialAmount;
   }
 
-  adjustReserve(amount: number) {
-    this.amount = amount;
+  credit(credit: number) {
+    this.amount = this.amount + credit;
+  }
+
+  debit(debit: number) {
+    this.amount = this.amount - debit;
   }
 }
