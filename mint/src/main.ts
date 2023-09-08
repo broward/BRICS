@@ -13,6 +13,8 @@ async function bootstrap() {
   console.log('my index is ' + Country[index]);
   console.log('my realmID = ' + realms[0].realmID);
 
+  visitor.rebalance();
+
   const app = await NestFactory.create(AppModule);
   await app.listen(3000);
 }

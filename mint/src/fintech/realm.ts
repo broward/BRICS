@@ -42,9 +42,9 @@ export class Realm {
     this.log.push(trx);
   }
 
-  /*getTrx(): Trx[] {
+  getLog(): Trx[] {
     return this.log;
-  }*/
+  }
 
   setFxRates(fxrates: FxRate[]) {
     this.fxrates = fxrates;
