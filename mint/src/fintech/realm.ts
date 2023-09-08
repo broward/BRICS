@@ -1,6 +1,7 @@
 import { Reserve } from './reserve';
 import { Trx } from './trx';
 import { FxRate } from './fxrate';
+import { DebitError } from './debit_error';
 
 export enum Country {
   BRAZIL,
@@ -36,8 +37,13 @@ export class Realm {
     const payeeRealm = realms[trx.payeeID];
     const payerReserve = payerRealm.reserves[trx.payerID];
     const PayeeReserve = payeeRealm.reserves[trx.payeeID];
-    payerReserve.debit(trx.amount);
-    PayeeReserve.credit(trx.amount);
+    try {
+      payerReserve.debit(trx.amount);
+      PayeeReserve.credit(trx.amount);
+    } catch (e: any) {
+      throw new DebitError('debit exceeds reserve amount');
+      console.log(e);
+    }
 
     this.log.push(trx);
   }

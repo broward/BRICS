@@ -13,6 +13,9 @@ export class Reserve {
   }
 
   debit(debit: number) {
+    if (debit > this.amount) {
+      // throw an error here
+    }
     this.amount = this.amount - debit;
   }
 }

@@ -10,9 +10,11 @@ export class Visitor {
   rebalance = function () {
     for (let i = 0; i < this.realms.length; i++) {
       for (let j = 0; j < this.realms[i].reserves.length; j++) {
+
+        let currentReserve = this.realms[i].reserves[i];
+
         console.log('reserve = ' + this.realms[i].reserves[j].realmID);
-        let currentReserve = i;
-        let targetReserve = this.realms[i].reserves[j].realmID;
+        let targetReserve = this.realms[i].reserves[j];
 
         // don't execute upon ourselves
         if (currentReserve == targetReserve) {
@@ -20,7 +22,9 @@ export class Visitor {
           continue;
         }
 
+        if (currentReserve.amount > targetReserve.amount) {
 
+        }
       }
     }
     console.log('running rebalance');
@@ -36,7 +40,6 @@ export class Visitor {
   setFXRates = function () {
     console.log('setting exchange rates');
     for (let i = 0; i < this.realms.length; i++) {
-
       // calculate rates for this realm
       const tempFxRate: FxRate[] = [];
       this.realms[i].FxRate = tempFxRate;
