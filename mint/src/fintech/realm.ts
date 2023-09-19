@@ -36,10 +36,10 @@ export class Realm {
     const payerRealm = realms[trx.payerID];
     const payeeRealm = realms[trx.payeeID];
     const payerReserve = payerRealm.reserves[trx.payerID];
-    const PayeeReserve = payeeRealm.reserves[trx.payeeID];
+    const payeeReserve = payeeRealm.reserves[trx.payeeID];
     try {
       payerReserve.debit(trx.amount);
-      PayeeReserve.credit(trx.amount);
+      payeeReserve.credit(trx.amount);
     } catch (e: any) {
       throw new DebitError('debit exceeds reserve amount');
       console.log(e);

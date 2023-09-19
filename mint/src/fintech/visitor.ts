@@ -6,6 +6,20 @@ export class Visitor {
   realms: Realm[] = [];
   fxrates: FxRate[] = [];
   trx: Trx[] = [];
+  reserveSum: [] = [];
+  totalReserveSum = 0;
+
+  sumReserves = function() {
+    // iterate through realms
+    for (let i = 0; i < this.realms.length; i++) {
+
+      // iterate reserves in each realm
+      for (let j = 0; j < this.realms[i].reserves.length; j++) {
+        this.reserveSum[j] = this.reserveSum[j] + this.realms[i].reserves[j];
+        this.totalReserveSum = this.totalReserveSum + this.realms[i].reserves[j]
+      }
+    }
+  }
 
   rebalance = function () {
     for (let i = 0; i < this.realms.length; i++) {
